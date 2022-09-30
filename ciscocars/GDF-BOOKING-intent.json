@@ -1,0 +1,380 @@
+{
+  "id": "1ff4c9da-26c0-41a8-a603-0865ca2b1f2d",
+  "name": "BOOKING",
+  "auto": true,
+  "condition": "",
+  "conditionalFollowupEvents": [],
+  "conditionalResponses": [],
+  "context": [],
+  "contexts": [],
+  "endInteraction": false,
+  "events": [],
+  "fallbackIntent": false,
+  "liveAgentHandoff": false,
+  "parentId": null,
+  "followUpIntents": [],
+  "priority": 500000,
+  "responses": [
+    {
+      "action": "",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "noInputPromptMessages": [],
+          "noMatchPromptMessages": [],
+          "promptMessages": [],
+          "defaultValue": "",
+          "name": "Location",
+          "dataType": "@Location",
+          "isList": false,
+          "required": true,
+          "prompts": [
+            "Which service location will you be using?"
+          ],
+          "value": "$Location",
+          "outputDialogContexts": []
+        },
+        {
+          "noInputPromptMessages": [],
+          "noMatchPromptMessages": [],
+          "promptMessages": [],
+          "defaultValue": "",
+          "name": "date",
+          "dataType": "@sys.date",
+          "isList": false,
+          "required": true,
+          "prompts": [
+            "What date do you want to book your service for?"
+          ],
+          "value": "$date",
+          "outputDialogContexts": []
+        },
+        {
+          "noInputPromptMessages": [],
+          "noMatchPromptMessages": [],
+          "promptMessages": [],
+          "defaultValue": "",
+          "name": "time",
+          "dataType": "@sys.time",
+          "isList": false,
+          "required": true,
+          "prompts": [
+            "What time will you be dropping off?",
+            "What is the drop off time?"
+          ],
+          "value": "$time",
+          "outputDialogContexts": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "messages": [
+        {
+          "type": "message",
+          "condition": "",
+          "speech": [
+            "<speak>You have requested your vehicle to be serviced at $Location on <say-as interpret-as=\"date\" format=\"yyyymmdd\">$date</say-as> .  Our schedulers will confirm availability and we will send you a confirmation.  Do you need anything else? \n</speak>"
+          ]
+        }
+      ],
+      "resetContexts": false
+    }
+  ],
+  "rootParentId": null,
+  "templates": [],
+  "userSays": [
+    {
+      "isTemplate": false,
+      "data": [
+        {
+          "text": "Can I get my car booked in for a service at ",
+          "userDefined": false
+        },
+        {
+          "text": "Barossa",
+          "userDefined": true,
+          "alias": "Location",
+          "meta": "@Location"
+        },
+        {
+          "text": " on ",
+          "userDefined": false
+        },
+        {
+          "text": "Friday",
+          "userDefined": true,
+          "alias": "date",
+          "meta": "@sys.date"
+        }
+      ],
+      "count": 0,
+      "id": "e46e92c0-0184-442c-b30e-d11a0cf56b47",
+      "updated": null
+    },
+    {
+      "isTemplate": false,
+      "data": [
+        {
+          "text": "Can you make a service booking for ",
+          "userDefined": false
+        },
+        {
+          "text": "next Monday",
+          "userDefined": true,
+          "alias": "date",
+          "meta": "@sys.date"
+        },
+        {
+          "text": " at ",
+          "userDefined": false
+        },
+        {
+          "text": "Kensington",
+          "userDefined": true,
+          "alias": "Location",
+          "meta": "@Location"
+        }
+      ],
+      "count": 0,
+      "id": "24f0399b-8cfd-4836-8161-f278e435f277",
+      "updated": null
+    },
+    {
+      "isTemplate": false,
+      "data": [
+        {
+          "text": "Can I book my vehicle in for servicing at ",
+          "userDefined": false
+        },
+        {
+          "text": "Clovelly Park",
+          "userDefined": true,
+          "alias": "Location",
+          "meta": "@Location"
+        },
+        {
+          "text": " on ",
+          "userDefined": false
+        },
+        {
+          "text": "Thursday",
+          "userDefined": true,
+          "alias": "date",
+          "meta": "@sys.date"
+        }
+      ],
+      "count": 0,
+      "id": "a6c8764c-4458-4972-9eb0-30d105c09218",
+      "updated": null
+    },
+    {
+      "isTemplate": false,
+      "data": [
+        {
+          "text": "I would like to book my car in for a service at ",
+          "userDefined": false
+        },
+        {
+          "text": "Norwood",
+          "userDefined": true,
+          "alias": "Location",
+          "meta": "@Location"
+        },
+        {
+          "text": " ",
+          "userDefined": false
+        },
+        {
+          "text": "next wednesday",
+          "userDefined": true,
+          "alias": "date",
+          "meta": "@sys.date"
+        }
+      ],
+      "count": 0,
+      "id": "fc201528-7ac6-4221-a40b-f70477a08b07",
+      "updated": null
+    },
+    {
+      "isTemplate": false,
+      "data": [
+        {
+          "text": "I want to book my car into ",
+          "userDefined": false
+        },
+        {
+          "text": "Barossa",
+          "userDefined": true,
+          "alias": "Location",
+          "meta": "@Location"
+        },
+        {
+          "text": " for a service ",
+          "userDefined": false
+        },
+        {
+          "text": "tomorrow",
+          "userDefined": true,
+          "alias": "date",
+          "meta": "@sys.date"
+        }
+      ],
+      "count": 0,
+      "id": "e05ef5ab-9ba2-4367-9224-fcad0ca84123",
+      "updated": null
+    },
+    {
+      "isTemplate": false,
+      "data": [
+        {
+          "text": "I want to book my vehicle in to get it serviced",
+          "userDefined": false
+        }
+      ],
+      "count": 0,
+      "id": "64043905-30c4-4fe6-9b96-bf3a45f21584",
+      "updated": null
+    },
+    {
+      "isTemplate": false,
+      "data": [
+        {
+          "text": "I want to book my car in for a service",
+          "userDefined": false
+        }
+      ],
+      "count": 0,
+      "id": "b1e7892a-47b5-479a-b3b6-06dd645a5c43",
+      "updated": null
+    },
+    {
+      "isTemplate": false,
+      "data": [
+        {
+          "text": "I want to make a booking for ",
+          "userDefined": false
+        },
+        {
+          "text": "123abc",
+          "userDefined": true,
+          "meta": "@sys.ignore",
+          "alias": null
+        },
+        {
+          "text": " at ",
+          "userDefined": false
+        },
+        {
+          "text": "Adelaide",
+          "userDefined": true,
+          "alias": "Location",
+          "meta": "@Location"
+        },
+        {
+          "text": " for ",
+          "userDefined": false
+        },
+        {
+          "text": "tomorrow",
+          "userDefined": true,
+          "alias": "date",
+          "meta": "@sys.date"
+        },
+        {
+          "text": " with a drop-off time of ",
+          "userDefined": false
+        },
+        {
+          "text": "8:00am",
+          "userDefined": true,
+          "alias": "time",
+          "meta": "@sys.time"
+        },
+        {
+          "text": ".  I ",
+          "userDefined": false
+        },
+        {
+          "text": "do not",
+          "userDefined": true,
+          "meta": "@sys.ignore",
+          "alias": null
+        },
+        {
+          "text": " need a loan car.",
+          "userDefined": false
+        }
+      ],
+      "count": 0,
+      "id": "e4e2cd47-a6d3-438f-996f-cd90db1db35b",
+      "updated": null
+    },
+    {
+      "isTemplate": false,
+      "data": [
+        {
+          "text": "I want to make a booking for ",
+          "userDefined": false
+        },
+        {
+          "text": "123abc",
+          "userDefined": true,
+          "meta": "@sys.ignore",
+          "alias": null
+        },
+        {
+          "text": " at ",
+          "userDefined": false
+        },
+        {
+          "text": "Adelaide",
+          "userDefined": true,
+          "alias": "Location",
+          "meta": "@Location"
+        },
+        {
+          "text": " for ",
+          "userDefined": false
+        },
+        {
+          "text": "tomorrow",
+          "userDefined": true,
+          "alias": "date",
+          "meta": "@sys.date"
+        },
+        {
+          "text": " with a drop-off time of ",
+          "userDefined": false
+        },
+        {
+          "text": "8:00am",
+          "userDefined": true,
+          "alias": "time",
+          "meta": "@sys.time"
+        },
+        {
+          "text": ".",
+          "userDefined": false
+        }
+      ],
+      "count": 0,
+      "id": "16db5f4e-cd32-4a29-acf3-e5abcde6179a",
+      "updated": null
+    },
+    {
+      "isTemplate": false,
+      "data": [
+        {
+          "text": "norwood",
+          "userDefined": false,
+          "alias": "Location",
+          "meta": "@Location"
+        }
+      ],
+      "count": 0,
+      "id": "8d020115-0fbe-407c-99fd-ec13bb0a11af",
+      "updated": null
+    }
+  ],
+  "webhookForSlotFilling": true,
+  "webhookUsed": true
+}
