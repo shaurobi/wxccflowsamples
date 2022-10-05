@@ -11,3 +11,7 @@ There's a couple of aspects to importing an omni-channel flow here, namely:
 [Here's the google documentation on importing GDF intents](https://cloud.google.com/dialogflow/es/docs/how/manage-intents)
 
 I've also built a [quick demonstration video](https://app.vidcast.io/share/ff6a13a5-feeb-40a6-9b3b-eff986e96f23) on using MockAPI for your own customer demos. If you find it useful I encourage you to pay the monthly fee, as I've definitely gotten enough value out of it to justify it.
+|Feature|Description|Flow|Notes|
+|---|---|---|---|
+| SMS Followup  | Send a followup SMS using call variables passed to a digital flow  | Cisco Cars   | Check the "AgentDisconnected" Event flow  |
+| Actions after time in queue  | Perform an action such as offering a callback/SMS deflection after x number of minutes in Queue  | Cisco Cars  | Check after the queue node, music node plays for 10 seconds and then passes to an IVR menu. In this way you can play music for a set period of time and then increase a counter, perform a check, or offer a callback.   |
