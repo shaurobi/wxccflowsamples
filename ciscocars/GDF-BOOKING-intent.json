@@ -1,5 +1,5 @@
 {
-  "id": "1ff4c9da-26c0-41a8-a603-0865ca2b1f2d",
+  "id": "0b56550b-8ca2-417c-845f-fc00c4f3376c",
   "name": "BOOKING",
   "auto": true,
   "condition": "",
@@ -24,14 +24,14 @@
           "noMatchPromptMessages": [],
           "promptMessages": [],
           "defaultValue": "",
-          "name": "Location",
-          "dataType": "@Location",
+          "name": "location",
+          "dataType": "@sys.location",
           "isList": false,
           "required": true,
           "prompts": [
             "Which service location will you be using?"
           ],
-          "value": "$Location",
+          "value": "$location",
           "outputDialogContexts": []
         },
         {
@@ -72,7 +72,7 @@
           "type": "message",
           "condition": "",
           "speech": [
-            "<speak>You have requested your vehicle to be serviced at $Location on <say-as interpret-as=\"date\" format=\"yyyymmdd\">$date</say-as> .  Our schedulers will confirm availability and we will send you a confirmation.  Do you need anything else? \n</speak>"
+            "<speak>You have requested your vehicle to be serviced at $location on <say-as interpret-as=\"date\" format=\"yyyymmdd\">$date</say-as> .  Our schedulers will confirm availability and we will send you a confirmation.  Do you need anything else? \n</speak>"
           ]
         }
       ],
@@ -92,8 +92,8 @@
         {
           "text": "Barossa",
           "userDefined": true,
-          "alias": "Location",
-          "meta": "@Location"
+          "alias": "location",
+          "meta": "@sys.location"
         },
         {
           "text": " on ",
@@ -130,8 +130,8 @@
         {
           "text": "Kensington",
           "userDefined": true,
-          "alias": "Location",
-          "meta": "@Location"
+          "alias": "location",
+          "meta": "@sys.location"
         }
       ],
       "count": 0,
@@ -148,8 +148,8 @@
         {
           "text": "Clovelly Park",
           "userDefined": true,
-          "alias": "Location",
-          "meta": "@Location"
+          "alias": "location",
+          "meta": "@sys.location"
         },
         {
           "text": " on ",
@@ -176,8 +176,8 @@
         {
           "text": "Norwood",
           "userDefined": true,
-          "alias": "Location",
-          "meta": "@Location"
+          "alias": "location",
+          "meta": "@sys.location"
         },
         {
           "text": " ",
@@ -204,8 +204,8 @@
         {
           "text": "Barossa",
           "userDefined": true,
-          "alias": "Location",
-          "meta": "@Location"
+          "alias": "location",
+          "meta": "@sys.location"
         },
         {
           "text": " for a service ",
@@ -266,8 +266,8 @@
         {
           "text": "Adelaide",
           "userDefined": true,
-          "alias": "Location",
-          "meta": "@Location"
+          "alias": "location",
+          "meta": "@sys.location"
         },
         {
           "text": " for ",
@@ -328,8 +328,8 @@
         {
           "text": "Adelaide",
           "userDefined": true,
-          "alias": "Location",
-          "meta": "@Location"
+          "alias": "location",
+          "meta": "@sys.location"
         },
         {
           "text": " for ",
@@ -366,8 +366,8 @@
         {
           "text": "norwood",
           "userDefined": false,
-          "alias": "Location",
-          "meta": "@Location"
+          "alias": "location",
+          "meta": "@sys.location"
         }
       ],
       "count": 0,
