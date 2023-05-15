@@ -1,0 +1,64 @@
+[
+  {
+    "name": "Password Reset",
+    "url": "https://some-web-site.com/some-web-hook",
+    "parameters": [
+      {
+        "type": "input",
+        "name": "message",
+        "label": "Send a message"
+      },
+      {
+        "type": "select",
+        "name": "channel",
+        "label": "Choose a Channel",
+        "values": ["sms", "email", "phone"]
+      }
+    ] 
+  },
+  {
+    "name": "Schedule a Callback",
+    "url": "https://some-web-site.com/some-web-hook",
+    "parameters": [
+      {
+        "type": "datetime",
+        "name": "scheduledTime",
+        "label": "Enter callback Date & Time"
+      }
+    ]
+  },
+  {
+    "name": "One Time Pin",
+    "url": "https://some-web-site.com/some-web-hook",
+    "parameters": [
+      {
+        "type": "select",
+        "name": "channel",
+        "label": "Choose a Channel",
+        "values": ["sms", "email", "phone"]
+      },
+      {
+        "type": "select",
+        "name": "lenght",
+        "label": "Pick a pin lenght",
+        "values": ["4-digit", "5-digit", "6-digit"]
+      }
+    ]
+  },
+  {
+    "name": "Get Images",
+    "url": "https://some-web-site.com/some-web-hook",
+    "parameters": [
+      {
+        "type": "select",
+        "name": "channel",
+        "label": "Choose a Channel",
+        "values": ["sms", "email", "phone"]
+      }
+    ]
+  },
+  {
+    "name": "Update Account",
+    "url": "https://some-web-site.com/some-web-hook"
+  }
+]

@@ -1,0 +1,171 @@
+[
+  [
+    "2dvd5473-df34-4216-8320-9b752aeac21d",
+    {
+      "agentId": "abcef54b-407c-44d2-1237-4592b6e99fd3",
+      "eventTime": 1671477828876,
+      "eventType": "RoutingMessage",
+      "interaction": {
+        "callAssociatedData": {
+          "FCR": {
+            "agentEditable": true,
+            "agentViewable": true,
+            "displayName": "FCR",
+            "global": true,
+            "isSecure": false,
+            "name": "FCR",
+            "reportable": true,
+            "secureKeyId": "",
+            "secureKeyVersion": 0,
+            "type": "BOOLEAN",
+            "value": "false"
+          },
+          "ani": {
+            "agentEditable": false,
+            "agentViewable": true,
+            "displayName": "ani",
+            "global": false,
+            "isSecure": false,
+            "name": "ani",
+            "reportable": false,
+            "secureKeyId": "",
+            "secureKeyVersion": 0,
+            "type": "STRING",
+            "value": "+12015551234"
+          },
+          "dn": {
+            "agentEditable": false,
+            "agentViewable": true,
+            "displayName": "dn",
+            "global": false,
+            "isSecure": false,
+            "name": "dn",
+            "reportable": false,
+            "secureKeyId": "",
+            "secureKeyVersion": 0,
+            "type": "STRING",
+            "value": "+17175551234"
+          },
+          "virtualTeamName": {
+            "agentEditable": false,
+            "agentViewable": true,
+            "displayName": "virtualTeamName",
+            "global": false,
+            "isSecure": false,
+            "name": "virtualTeamName",
+            "reportable": false,
+            "secureKeyId": "",
+            "secureKeyVersion": 0,
+            "type": "STRING",
+            "value": "sales_voice_Queue"
+          }
+        },
+        "callAssociatedDetails": {
+          "ani": "+12015551234",
+          "dn": "+17175551234",
+          "ronaTimeout": "18",
+          "virtualTeamName": "sales_voice_Queue"
+        },
+        "callFlowParams": {},
+        "callProcessingDetails": {
+          "EP_ID": "621fc04b-60fc-4a00-9462-b46b763792d9",
+          "QMgrName": "aqm",
+          "QueueId": "2950fe43-98bc-436e-9ff2-a592c5905e3a",
+          "ROUTING_TYPE": "queueBasedRouting",
+          "ani": "+12015551234",
+          "dnis": "+17175551234",
+          "fceRegisteredEvents": "",
+          "isParked": "false",
+          "mohFileName": "defaultmusic_on_hold.wav",
+          "participantInviteTimeout": "false",
+          "priority": "10",
+          "queuedDestinationID": "2950fe43-98bc-436e-9ff2-a592c5905e3a",
+          "queuedTo": "Queue",
+          "ronaTimeout": "18",
+          "routingStrategyId": "d291422c-1594-4274-9c61-ea216bc03cbb",
+          "taskToBeSelfServiced": "false",
+          "tenantId": "183",
+          "virtualTeamName": "sales_voice_Queue",
+          "vteamId": "2950fe43-98bc-436e-9ff2-a592c5905e3a",
+          "workflowId": "61fbfc57616021392fe7628c",
+          "workflowName": "sales_MainFlow",
+          "recordInProgress": "true",
+          "pauseDuration": "10",
+          "pauseResumeEnabled": "true"
+        },
+        "contactDirection": {
+          "type": "INBOUND"
+        },
+        "createdTimestamp": 1671477821997,
+        "currentVTeam": "2950fe43-98bc-436e-9ff2-a592c5905e3a",
+        "interactionId": "2dvd5473-df34-4216-8320-9b752aeac21d",
+        "isFcManaged": true,
+        "isTerminated": false,
+        "media": {
+          "2dvd5473-df34-4216-8320-9b752aeac21d": {
+            "holdTimestamp": null,
+            "isHold": false,
+            "mType": "mainCall",
+            "mediaMgr": "vmm",
+            "mediaResourceId": "2dvd5473-df34-4216-8320-9b752aeac21d",
+            "mediaType": "telephony",
+            "participants": [
+              "+12015551234",
+              "abcef54b-407c-44d2-1237-4592b6e99fd3"
+            ]
+          }
+        },
+        "mediaChannel": "broadcloud",
+        "mediaType": "telephony",
+        "orgId": "12700733-dd25-46b9-971e-ed0ce9f140c6",
+        "outboundType": null,
+        "owner": "abcef54b-407c-44d2-1237-4592b6e99fd3",
+        "participants": {
+          "+12015551234": {
+            "id": "+12015551234",
+            "pType": "Customer",
+            "type": "Customer"
+          },
+          "abcef54b-407c-44d2-1237-4592b6e99fd3": {
+            "channelId": "7f2e8051-eb42-431b-82f4-868188030877",
+            "consultState": null,
+            "consultTimestamp": null,
+            "dn": "2660",
+            "hasJoined": true,
+            "id": "abcef54b-407c-44d2-1237-4592b6e99fd3",
+            "isConsulted": false,
+            "isOffered": true,
+            "isWrapUp": false,
+            "joinTimestamp": 1671477828863,
+            "lastUpdated": 1671477828863,
+            "name": "John Doe",
+            "pType": "Agent",
+            "queueId": "2950fe43-98bc-436e-9ff2-a592c5905e3a",
+            "queueMgrId": "aqm",
+            "sessionId": "962c7b57-d069-4dca-809e-8d3d85124f22",
+            "siteId": "239",
+            "skillId": null,
+            "skillName": null,
+            "skills": [],
+            "teamId": "4283ca91-c1d1-4b29-813c-4c3b355a9e31",
+            "teamName": "sales_team",
+            "type": "Agent",
+            "wrapUpTimestamp": null
+          }
+        },
+        "previousVTeams": [
+          "621fc04b-60fc-4a00-9462-b46b763792d9"
+        ],
+        "queuedTimestamp": null,
+        "state": "connected",
+        "workflowManager": null
+      },
+      "interactionId": "2dvd5473-df34-4216-8320-9b752aeac21d",
+      "mediaResourceId": "2dvd5473-df34-4216-8320-9b752aeac21d",
+      "orgId": "12700733-dd25-46b9-971e-ed0ce9f140c6",
+      "queueMgr": "aqm",
+      "trackingId": "ea156a61-6cb2-4201-bb47-7f758e8ae7f4",
+      "type": "AgentContactAssigned"
+    }
+  ]
+]
