@@ -1,0 +1,2413 @@
+{
+"agent": {
+        "version": "0.1.0",
+        "appTitle": "Webex Agent Desktop - ESD V7",
+        "logo": "",
+        "dragDropEnabled": false,
+        "notificationTimer": 8,
+        "maximumNotificationCount": 3,
+        "browserNotificationTimer": 8,
+        "wxmConfigured": true,
+        "desktopChatApp": {
+            "webexConfigured": true
+        },
+        "area": {
+            "headless": {
+                "id": "dw-headless",
+                "widgets": {
+                    "comp1": {
+                        "comp": "div"
+                    }
+                },
+                "layout": {
+                    "areas": [
+                        [
+                            "comp1"
+                        ]
+                    ],
+                    "size": {
+                        "cols": [
+                            1
+                        ],
+                        "rows": [
+                            1
+                        ]
+                    }
+                }
+            },
+            "advancedHeader": [
+                    {
+                        "comp": "agentx-webex"
+                    },
+					{
+                        "comp": "voice-trigger-workflows",
+                        "attributes": {
+                            "darkMode": "$STORE.app.darkMode"
+                        },
+                        "properties": {
+                            "taskMap": "$STORE.agentContact.taskMap",
+                            "taskSelected": "$STORE.agentContact.taskSelected",
+                            "configJSON": [
+                                {
+                                    "name": "Password Reset",
+                                    "url": "https://hooks.au.webexconnect.io/events/51COQ1SYXL",
+                                    "parameters": [
+                                        {
+                                            "type": "input",
+                                            "name": "message",
+                                            "label": "Send a message with the reset URL"
+                                        },
+                                        {
+                                            "type": "select",
+                                            "name": "channel",
+                                            "label": "Choose a Channel",
+                                            "values": [
+                                                "SMS",
+                                                "E-mail",
+                                                "WhatsApp"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Schedule Callback",
+                                    "url": "https://hooks.au.webexconnect.io/events/JXA9JYMTFU",
+                                    "parameters": [
+                                        {
+                                            "type": "datetime",
+                                            "name": "scheduledTime",
+                                            "label": "Enter callback Date & Time"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "One Time Pin",
+                                    "url": "https://hooks.au.webexconnect.io/events/NPPR1YT35K",
+                                    "parameters": [
+                                        {
+                                            "type": "select",
+                                            "name": "channel",
+                                            "label": "Choose a Channel",
+                                            "values": [
+                                                "SMS",
+                                                "E-mail",
+                                                "WhatsApp"
+                                            ]
+                                        },
+                                        {
+                                            "type": "input",
+                                            "name": "OTP",
+                                            "label": "Input your OTP here."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Send SMS",
+                                    "url": "https://hooks.au.webexconnect.io/events/Y6KM3CZP6V",
+                                    "parameters": [
+                                        {
+                                            "type": "input",
+                                            "name": "message",
+                                            "label": "Write your message here."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Send Email",
+                                    "url": "https://hooks.au.webexconnect.io/events/WX7B35ND8W",
+                                    "parameters": [
+                                        {
+                                            "type": "input",
+                                            "name": "email",
+                                            "label": "Please provide customers email:"
+                                        },
+                                        {
+                                            "type": "select",
+                                            "name": "template",
+                                            "Label": "Choose an email template",
+                                            "values": [
+                                                "Finance information",
+                                                "Welcome pack",
+                                                "Loyalty bonus",
+                                                "Returns process"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "script": "https://storage.googleapis.com/anz-tsa-wxcc/voice-trigger-worfklows.js"
+                    },
+                    {
+                        "comp": "agentx-webex"
+                    },
+                    {
+                        "comp": "agentx-outdial"
+                    },
+                    {
+                        "comp": "agentx-notification"
+                    },
+                    {
+                        "comp": "agentx-state-selector"
+                    }
+                    
+                ],
+            "panel": {
+                    "comp": "md-tabs",
+                    "attributes": {
+                        "class": "widget-tabs"
+                    },
+                    "children": [
+                        {
+                            "comp": "md-tab",
+                            "attributes": {
+                                "slot": "tab",
+                                "class": "widget-pane-tab"
+                            },
+                            "children": [
+                                {
+                                    "comp": "slot",
+                                    "attributes": {
+                                        "name": "IVR_TRANSCRIPT_TAB"
+                                    }
+                                }
+                            ],
+                            "visibility": "IVR_TRANSCRIPT"
+                        },
+                        {
+                            "comp": "md-tab-panel",
+                            "attributes": {
+                                "slot": "panel",
+                                "class": "widget-pane"
+                            },
+                            "children": [
+                                {
+                                    "comp": "slot",
+                                    "attributes": {
+                                        "name": "IVR_TRANSCRIPT"
+                                    }
+                                }
+                            ],
+                            "visibility": "IVR_TRANSCRIPT"
+                        },
+                        {
+                            "comp": "md-tab",
+                            "attributes": {
+                                "slot": "tab"
+                            },
+                            "children": [
+                                {
+                                    "comp": "slot",
+                                    "attributes": {
+                                        "name": "WXM_JOURNEY_TAB"
+                                    }
+                                }
+                            ],
+                            "visibility": "WXM_JOURNEY"
+                        },
+                        {
+                            "comp": "md-tab-panel",
+                            "attributes": {
+                                "slot": "panel",
+                                "class": "widget-pane"
+                            },
+                            "children": [
+                                {
+                                    "comp": "agentx-wc-cloudcherry-widget",
+                                    "properties": {
+                                        "userModel": "$STORE.app.userModel",
+                                        "spaceId": "61dd0d1a750aeb2b2a5ebd29-anztsawxccdemosystem",
+                                        "metricsId": "61dd0d1a750aeb2b2a5ebd29-anztsawxccdemosystem",
+                                        "teamId": "$STORE.agent.teamName",
+                                        "ani": "$STORE.agentContact.taskSelected.ani",
+                                        "isDarkMode": "$STORE.app.darkMode"
+                                    },
+                                    "wrapper": {
+                                        "title": "Customer Experience Journey",
+                                        "maximizeAreaName": "app-maximize-area"
+                                    }
+                                }
+                            ],
+                            "visibility": "WXM_JOURNEY"
+                        },
+                        {
+                            "comp": "md-tab",
+                            "attributes": {
+                                "slot": "tab",
+                                "class": "widget-pane-tab"
+                            },
+                            "children": [
+                                {
+                                    "comp": "span",
+                                    "textContent": "Customer Journey"
+                                }
+                            ]
+                        },
+                        {
+                            "comp": "md-tab-panel",
+                            "attributes": {
+                                "slot": "panel",
+                                "class": "widget-pane"
+                            },
+                            "children": [
+                                {
+                                    "comp": "customer-journey-widget",
+                                    "script": "https://cjaas.cisco.com/widgets/customer-journey-8.0.7.js",
+                                    "attributes": {
+                                        "tape-read-token": "INSERT TAPE-READ-TOKEN HERE",
+                                        "profile-read-token": "INSERT PROFILE TOKEN HERE",
+                                        "profile-write-token": "INSERT PROFILE TOKEN HERE",
+                                        "stream-read-token": "INSERT STREAM READ TOKEN HERE",
+                                        "base-url": "https://jds-us1.cjaas.cisco.com",
+                                        "identity-read-token": "INSERT IDENTITY TOKEN HERE",
+                                        "identity-write-token": "INSERT IDENTITY TOKEN HERE",
+                                        "user-search": "true",
+                                        "icon-data-path": "https://wxcc-cjds-demo.glitch.me/CJDS_ANZ_TSA_v2_icons.json",
+                                        "logs-on": "true",
+                                        "time-frame": "All",
+                                        "live-stream": ""
+                                    },
+                                    "properties": {
+                                        "interactionData": "$STORE.agentContact.taskSelected"
+                                    },
+                                    "wrapper": {
+                                        "title": "Customer Journey Widget",
+                                        "maximizeAreaName": "app-maximize-area"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "comp": "md-tab",
+                            "attributes": {
+                                "slot": "tab",
+                                "class": "widget-pane-tab"
+                            },
+                            "children": [
+                                {
+                                    "comp": "slot",
+                                    "attributes": {
+                                        "name": "CONTACT_HISTORY_TAB"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "comp": "md-tab-panel",
+                            "attributes": {
+                                "slot": "panel",
+                                "class": "widget-pane"
+                            },
+                            "children": [
+                                {
+                                    "comp": "slot",
+                                    "attributes": {
+                                        "name": "CONTACT_HISTORY"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "comp": "md-tab",
+                            "attributes": {
+                                "slot": "tab",
+                                "class": "widget-pane-tab"
+                            },
+                            "children": [
+                                {
+                                    "comp": "slot",
+                                    "attributes": {
+                                        "name": "SCREEN_POP_TAB"
+                                    }
+                                }
+                            ],
+                            "visibility": "SCREEN_POP"
+                        },
+                        {
+                            "comp": "md-tab-panel",
+                            "attributes": {
+                                "slot": "panel",
+                                "class": "widget-pane"
+                            },
+                            "children": [
+                                {
+                                    "comp": "slot",
+                                    "attributes": {
+                                        "name": "SCREEN_POP"
+                                    }
+                                }
+                            ],
+                            "visibility": "SCREEN_POP"
+                        }
+                    ]
+                },
+            "homepage": {
+                    "nav": {
+                        "label": "$I18N.common.homePageLabel",
+                        "icon": "home",
+                        "iconType": "momentum",
+                        "navigateTo": "home",
+                        "align": "top"
+                    },
+                    "page": {
+                        "id": "landing",
+                        "pageHeader": {
+                            "comp": "div",
+                            "children": [
+                                {
+                                    "comp": "page-title",
+                                    "attributes": {
+                                        "pageTitle": "$STORE.page.getDefaultPageTitle"
+                                    }
+                                }
+                            ],
+							"attributes": {
+							   "style": "margin: 16px 0px 16px 16px"
+							}
+                        },
+                        "useFlexLayout": true,
+                        "pageSubHeader": {
+                            "comp": "div",
+                            "attributes": {
+                                "style": "display: flex; float:right;margin:16px 0px 16px 16px"
+                            },
+                            "children": [
+                                {
+                                    "comp": "div",
+                                    "children": [
+                                        {
+                                            "comp": "md-label",
+                                            "textContent": "$I18N.pageSubHeader.queueName",
+                                            "attributes": {
+                                                "style": "margin-bottom:8px;"
+                                            }
+                                        },
+                                        {
+                                            "comp": "agentx-wc-queue-filter",
+                                            "properties": {
+                                                "selectedQueueList": "$STORE.agent.selectedQueueList",
+                                                "managedQueues": "$STORE.agent.managedQueues",
+                                                "isLoading": "$STORE.agent.isManagedQueueLoading",
+                                                "isError": "$STORE.agent.isManagedQueuesError"
+                                            }
+                                        }
+                                    ],
+                                    "attributes": {
+                                        "style": "display:block;width:260px;"
+                                    }
+                                },
+                                {
+                                    "comp": "div",
+                                    "children": [
+                                        {
+                                            "comp": "md-label",
+                                            "textContent": "$I18N.pageSubHeader.channelType",
+                                            "attributes": {
+                                                "style": "margin-bottom:8px;"
+                                            }
+                                        },
+                                        {
+                                            "comp": "agentx-wc-channel-filter",
+                                            "properties": {
+                                                "selectedChannelList": "$STORE.agent.selectedChannelList"
+                                            }
+                                        }
+                                    ],
+                                    "attributes": {
+                                        "style": "display:block;margin-left:16px;width:260px; "
+                                    }
+                                },
+                                {
+                                    "comp": "div",
+                                    "children": [
+                                        {
+                                            "comp": "md-label",
+                                            "textContent": "$I18N.pageSubHeader.managedTeams",
+                                            "attributes": {
+                                                "style": "margin-bottom:8px;"
+                                            }
+                                        },
+                                        {
+                                            "comp": "agentx-wc-team-filter",
+                                            "properties": {
+                                                "selectedTeamList": "$STORE.agent.selectedTeamList",
+                                                "managedTeams": "$STORE.agent.managedTeams",
+                                                "isLoading": "$STORE.agent.isManagedTeamLoading",
+                                                "isError": "$STORE.agent.isManagedTeamsError"
+                                            }
+                                        }
+                                    ],
+                                    "attributes": {
+                                        "style": "display:block;margin-left:16px;width:260px;"
+                                    }
+                                },
+                                {
+                                    "comp": "div",
+                                    "children": [
+                                        {
+                                            "comp": "agentx-more-actions-wrapper",
+                                            "properties": {
+                                                "actionList": [
+                                                    {
+                                                        "comp": "agentx-wc-goto-analyzer"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ],
+                                    "attributes": {
+                                        "style": "display:block;margin-top: 20px;"
+                                    }
+                                }
+                            ]
+                        },
+                        "widgets": {
+                            "comp1": {
+                                "comp": "analyzer-widget",
+                                "width": 3,
+                                "height": 5,
+                                "attributes": {
+                                    "is-dark-mode": "$STORE.app.darkMode",
+                                    "filter": "$STORE.agent.analyzerInteractionFilter",
+                                    "access-token": "$STORE.auth.accessToken",
+                                    "user-id": "$STORE.agent.agentId",
+                                    "org-id": "$STORE.agent.orgId",
+                                    "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                                    "widget-id": "c04c307c-71fd-41f4-828f-a196f94ce08a"
+                                }
+                            },
+                            "comp2": {
+                                "comp": "analyzer-widget",
+                                "width": 3,
+                                "height": 5,
+                                "attributes": {
+                                    "is-dark-mode": "$STORE.app.darkMode",
+                                    "filter": "$STORE.agent.analyzerInteractionFilter",
+                                    "access-token": "$STORE.auth.accessToken",
+                                    "user-id": "$STORE.agent.agentId",
+                                    "org-id": "$STORE.agent.orgId",
+                                    "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                                    "widget-id": "bc3f908d-11fa-4f86-be9b-7edfe76eaa59"
+                                }
+                            },
+                            "comp3": {
+                                "comp": "analyzer-widget",
+                                "width": 3,
+                                "height": 5,
+                                "attributes": {
+                                    "is-dark-mode": "$STORE.app.darkMode",
+                                    "filter": "$STORE.agent.analyzerInteractionFilter",
+                                    "access-token": "$STORE.auth.accessToken",
+                                    "user-id": "$STORE.agent.agentId",
+                                    "org-id": "$STORE.agent.orgId",
+                                    "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                                    "widget-id": "3e4555a5-be23-46e6-8450-8ebf3f1c35e1"
+                                }
+                            },
+                            "comp4": {
+                                "comp": "analyzer-widget",
+                                "width": 3,
+                                "height": 5,
+                                "attributes": {
+                                    "is-dark-mode": "$STORE.app.darkMode",
+                                    "filter": "$STORE.agent.analyzerInteractionFilter",
+                                    "access-token": "$STORE.auth.accessToken",
+                                    "user-id": "$STORE.agent.agentId",
+                                    "org-id": "$STORE.agent.orgId",
+                                    "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                                    "widget-id": "2902a699-bf70-4568-afa1-6857db3e0dc4"
+                                }
+                            },
+                            "comp5": {
+                                "comp": "analyzer-widget",
+                                "width": 3,
+                                "height": 5,
+                                "attributes": {
+                                    "is-dark-mode": "$STORE.app.darkMode",
+                                    "filter": "$STORE.agent.analyzerInteractionFilter",
+                                    "access-token": "$STORE.auth.accessToken",
+                                    "user-id": "$STORE.agent.agentId",
+                                    "org-id": "$STORE.agent.orgId",
+                                    "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                                    "widget-id": "21716c3a-09a9-476a-bab1-5fbcff226ac6"
+                                }
+                            },
+                            "comp6": {
+                                "comp": "analyzer-widget",
+                                "width": 3,
+                                "height": 5,
+                                "attributes": {
+                                    "is-dark-mode": "$STORE.app.darkMode",
+                                    "filter": "$STORE.agent.analyzerInteractionFilter",
+                                    "access-token": "$STORE.auth.accessToken",
+                                    "user-id": "$STORE.agent.agentId",
+                                    "org-id": "$STORE.agent.orgId",
+                                    "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                                    "widget-id": "0136c56b-c40f-47a0-af1c-1a180db1fd64"
+                                }
+                            },
+                            "comp7": {
+                                "comp": "analyzer-widget",
+                                "width": 3,
+                                "height": 5,
+                                "attributes": {
+                                    "is-dark-mode": "$STORE.app.darkMode",
+                                    "filter": "$STORE.agent.analyzerInteractionFilter",
+                                    "access-token": "$STORE.auth.accessToken",
+                                    "user-id": "$STORE.agent.agentId",
+                                    "org-id": "$STORE.agent.orgId",
+                                    "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                                    "widget-id": "e5e19275-0465-4e8c-923d-c9c06002330f"
+                                }
+                            },
+                            "comp8": {
+                                "comp": "analyzer-widget",
+                                "width": 3,
+                                "height": 5,
+                                "attributes": {
+                                    "is-dark-mode": "$STORE.app.darkMode",
+                                    "filter": "$STORE.agent.analyzerInteractionFilter",
+                                    "access-token": "$STORE.auth.accessToken",
+                                    "user-id": "$STORE.agent.agentId",
+                                    "org-id": "$STORE.agent.orgId",
+                                    "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                                    "widget-id": "a0bbecca-0129-4649-9261-ef0fe69281aa"
+                                }
+                            },
+                            "comp9": {
+                                "comp": "analyzer-widget",
+                                "width": 12,
+                                "height": 6,
+                                "attributes": {
+                                    "is-dark-mode": "$STORE.app.darkMode",
+                                    "filter": "$STORE.agent.analyzerInteractionFilter",
+                                    "access-token": "$STORE.auth.accessToken",
+                                    "user-id": "$STORE.agent.agentId",
+                                    "org-id": "$STORE.agent.orgId",
+                                    "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                                    "widget-id": "9d80a068-099c-48e3-b8a8-207eb38c47c5"
+                                }
+                            }
+                        }
+                    }
+                },
+			"navigation": [
+                    {
+                        "nav": {
+                            "label": "Corp Directory",
+                            "icon": "directory",
+                            "iconType": "momentum",
+                            "navigateTo": "atea-directory",
+                            "align": "top"
+                        },
+                        "page": {
+                            "id": "atea-directory",
+                            "widgets": {
+                                "comp2": {
+                                    "comp": "wxcc-cda",
+                                    "responsive": true,
+                                    "script": "https://crcda.wxcc.ateasystems.com/wxcc-cda.min.js",
+                                    "attributes": {
+                                        "cdaServer": "qudtloacx4hbjm6kw3jaj4jqdi0ommnx.lambda-url.ap-southeast-2.on.aws",
+                                        "outdialEntryPointId": "$STORE.agent.outDialEp",
+                                        "prefix": "",
+                                        "hidenotes": "true",
+                                        "hidesitebuttons": "true"
+                                    }
+                                }
+                            },
+                            "layout": {
+                                "areas": [
+                                    [
+                                        "comp2"
+                                    ]
+                                ],
+                                "size": {
+                                    "cols": [
+                                        1
+                                    ],
+                                    "rows": [
+                                        1
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "nav": {
+                            "label": "2Ring",
+                            "icon": "https://www.2ring.com/wp-content/themes/tworing/assets/img/logo.svg",
+                            "iconType": "other",
+                            "navigateTo": "2Ring",
+                            "align": "top"
+                        },
+                        "page": {
+                            "id": "2Ring",
+                            "widgets": {
+                                "right": {
+                                    "comp": "agentx-wc-iframe",
+                                    "attributes": {
+                                        "src": "https://demo.2ring.com/dw86/noit13"
+                                    },
+                                    "wrapper": {
+                                        "title": "2Ring Demo Dashboard",
+                                        "maximizeAreaName": "app-maximize-area"
+                                    }
+                                }
+                            },
+                            "layout": {
+                                "areas": [
+                                    [
+                                        "right"
+                                    ]
+                                ],
+                                "size": {
+                                    "cols": [
+                                        1
+                                    ],
+                                    "rows": [
+                                        1
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "nav": {
+                            "label": "Verint KB",
+                            "icon": "https://storage.googleapis.com/anz-tsa-wxcc/wxcc-desktop/verintKB.jpg",
+                            "iconType": "other",
+                            "navigateTo": "Verint KB",
+                            "align": "top"
+                        },
+                        "page": {
+                            "id": "Verint KB",
+                            "widgets": {
+                                "right": {
+                                    "comp": "agentx-wc-iframe",
+                                    "attributes": {
+                                        "src": "https://cisco-anz.demo.verint-km.com/site/en/search?nlpq="
+                                    },
+                                    "wrapper": {
+                                        "title": "Verint Knowledgebase",
+                                        "maximizeAreaName": "app-maximize-area"
+                                    }
+                                }
+                            },
+                            "layout": {
+                                "areas": [
+                                    [
+                                        "right"
+                                    ]
+                                ],
+                                "size": {
+                                    "cols": [
+                                        1
+                                    ],
+                                    "rows": [
+                                        1
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "nav": {
+                            "label": "SecureCall",
+                            "icon": "https://storage.googleapis.com/anz-tsa-wxcc/wxcc-desktop/securecall_w.jpg",
+                            "iconType": "other",
+                            "navigateTo": "SecureCall",
+                            "align": "top"
+                        },
+                        "page": {
+                            "id": "SecureCall",
+                            "widgets": {
+                                "right": {
+                                    "comp": "agentx-wc-iframe",
+                                    "attributes": {
+                                        "src": "https://emu.lab.broadsource.com.au:5001/secure-call/login"
+                                    },
+                                    "wrapper": {
+                                        "title": "SecureCall Payment Portal",
+                                        "maximizeAreaName": "app-maximize-area"
+                                    }
+                                }
+                            },
+                            "layout": {
+                                "areas": [
+                                    [
+                                        "right"
+                                    ]
+                                ],
+                                "size": {
+                                    "cols": [
+                                        1
+                                    ],
+                                    "rows": [
+                                        1
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "nav": {
+                            "label": "Customer Experience Analytics",
+                            "icon": "/app/images/wxm.bcd45cc3.svg",
+                            "iconType": "other",
+                            "navigateTo": "wxm-metrics",
+                            "align": "top"
+                        },
+                        "page": {
+                            "id": "wxm-metrics",
+                            "widgets": {
+                                "comp1": {
+                                    "comp": "agentx-wc-cloudcherry-widget",
+                                    "attributes": {
+                                        "metrics": true
+                                    },
+                                    "properties": {
+                                        "userModel": "$STORE.app.userModel",
+                                        "spaceId": "61dd0d1a750aeb2b2a5ebd2a-anztsawxccdemosystem",
+                                        "metricsId": "16947124829473422144142163725-anztsawxccdemosystem",
+                                        "teamId": "$STORE.agent.teamName",
+                                        "isDarkMode": "$STORE.app.darkMode"
+                                    }
+                                }
+                            },
+                            "layout": {
+                                "areas": [
+                                    [
+                                        "comp1"
+                                    ]
+                                ],
+                                "size": {
+                                    "cols": [
+                                        1
+                                    ],
+                                    "rows": [
+                                        1
+                                    ]
+                                }
+                            }
+                        },
+                        "visibility": "WXM_METRICS"
+                    },
+                    {
+                        "nav": {
+                            "label": "Journey Data Services",
+                            "icon": "https://storage.googleapis.com/anz-tsa-wxcc/wxcc-desktop/CJDS.PNG",
+                            "iconType": "other",
+                            "navigateTo": "CustomNav6",
+                            "align": "top"
+                        },
+                        "page": {
+                            "id": "CustomNav6",
+                            "widgets": {
+                                "right": {
+                                    "comp": "customer-journey-widget",
+                                    "script": "https://cjaas.cisco.com/widgets/customer-journey-8.0.7.js",
+                                    "attributes": {
+                                        "tape-read-token": "INSERT TAPE-READ-TOKEN HERE",
+                                        "profile-read-token": "INSERT PROFILE TOKEN HERE",
+                                        "profile-write-token": "INSERT PROFILE TOKEN HERE",
+                                        "stream-read-token": "INSERT STREAM READ TOKEN HERE",
+                                        "base-url": "https://jds-us1.cjaas.cisco.com",
+                                        "identity-read-token": "INSERT IDENTITY TOKEN HERE",
+                                        "identity-write-token": "INSERT IDENTITY TOKEN HERE",
+                                        "user-search": "true",
+                                        "icon-data-path": "https://wxcc-cjds-demo.glitch.me/CJDS_ANZ_TSA_v2_icons.json",
+                                        "logs-on": "true",
+                                        "time-frame": "7-Days"
+                                    },
+                                    "properties": {
+                                        "interactionData": "$STORE.agentContact.taskSelected"
+                                    },
+                                    "wrapper": {
+                                        "title": "Customer Journey Widget",
+                                        "maximizeAreaName": "app-maximize-area"
+                                    }
+                                }
+                            },
+                            "layout": {
+                                "areas": [
+                                    [
+                                        "right"
+                                    ]
+                                ],
+                                "size": {
+                                    "cols": [
+                                        1
+                                    ],
+                                    "rows": [
+                                        1
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "nav": {
+                            "label": "Cisco WFO",
+                            "icon": "https://storage.googleapis.com/anz-tsa-wxcc/wxcc-desktop/WFO.png",
+                            "iconType": "other",
+                            "navigateTo": "WFM",
+                            "align": "top"
+                        },
+                        "page": {
+                            "id": "iframe",
+                            "widgets": {
+                                "left": {
+                                    "comp": "agentx-wc-iframe",
+                                    "attributes": {
+                                        "src": "https://demowebsite-10871.web.app/WFM/calabrio.htm?m=home"
+                                    }
+                                }
+                            },
+                            "layout": {
+                                "areas": [
+                                    [
+                                        "left"
+                                    ]
+                                ],
+                                "size": {
+                                    "cols": [
+                                        1
+                                    ],
+                                    "rows": [
+                                        1
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+"supervisor": {
+            "version": "0.1.0",
+            "appTitle": "ESD Supervisor Desktop V7",
+            "logo": "",
+            "stopNavigateOnAcceptTask": false,
+            "dragDropEnabled": false,
+            "notificationTimer": 8,
+            "maximumNotificationCount": 3,
+            "browserNotificationTimer": 8,
+            "wxmConfigured": false,
+            "desktopChatApp": {
+                "webexConfigured": true
+            },
+            "area": {
+                "advancedHeader": [
+                    {
+                        "comp": "agentx-webex"
+                    },
+                    {
+                        "comp": "agentx-notification"
+                    }
+                ],
+                "panel": {
+                    "comp": "md-tabs",
+                    "attributes": {
+                        "class": "widget-tabs"
+                    },
+                    "children": [
+                        {
+                            "comp": "md-tab",
+                            "attributes": {
+                                "slot": "tab",
+                                "class": "widget-pane-tab"
+                            },
+                            "children": [
+                                {
+                                    "comp": "slot",
+                                    "attributes": {
+                                        "name": "IVR_TRANSCRIPT_TAB"
+                                    }
+                                }
+                            ],
+                            "visibility": "IVR_TRANSCRIPT"
+                        },
+                        {
+                            "comp": "md-tab-panel",
+                            "attributes": {
+                                "slot": "panel",
+                                "class": "widget-pane"
+                            },
+                            "children": [
+                                {
+                                    "comp": "slot",
+                                    "attributes": {
+                                        "name": "IVR_TRANSCRIPT"
+                                    }
+                                }
+                            ],
+                            "visibility": "IVR_TRANSCRIPT"
+                        },
+                        {
+                            "comp": "md-tab",
+                            "attributes": {
+                                "slot": "tab",
+                                "class": "widget-pane-tab"
+                            },
+                            "children": [
+                                {
+                                    "comp": "slot",
+                                    "attributes": {
+                                        "name": "CONTACT_HISTORY_TAB"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "comp": "md-tab-panel",
+                            "attributes": {
+                                "slot": "panel",
+                                "class": "widget-pane"
+                            },
+                            "children": [
+                                {
+                                    "comp": "customer-journey-widget",
+                                    "script": "https://cjaas.cisco.com/widgets/customer-journey-8.0.7.js",
+                                    "attributes": {
+                                        "tape-read-token": "INSERT TAPE-READ-TOKEN HERE",
+                                        "profile-read-token": "INSERT PROFILE TOKEN HERE",
+                                        "profile-write-token": "INSERT PROFILE TOKEN HERE",
+                                        "stream-read-token": "INSERT STREAM READ TOKEN HERE",
+                                        "base-url": "https://jds-us1.cjaas.cisco.com",
+                                        "identity-read-token": "INSERT IDENTITY TOKEN HERE",
+                                        "identity-write-token": "INSERT IDENTITY TOKEN HERE",
+                                        "user-search": "true",
+                                        "icon-data-path": "https://wxcc-cjds-demo.glitch.me/CJDS_ANZ_TSA_v2_icons.json",
+                                        "logs-on": "true",
+                                        "time-frame": "7-Days",
+                                        "live-stream": "true"
+                                    },
+                                    "properties": {
+                                        "interactionData": "$STORE.agentContact.taskSelected"
+                                    },
+                                    "wrapper": {
+                                        "title": "Customer History",
+                                        "maximizeAreaName": "app-maximize-area"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "comp": "md-tab",
+                            "attributes": {
+                                "slot": "tab",
+                                "class": "widget-pane-tab"
+                            },
+                            "children": [
+                                {
+                                    "comp": "slot",
+                                    "attributes": {
+                                        "name": "SCREEN_POP_TAB"
+                                    }
+                                }
+                            ],
+                            "visibility": "SCREEN_POP"
+                        },
+                        {
+                            "comp": "md-tab-panel",
+                            "attributes": {
+                                "slot": "panel",
+                                "class": "widget-pane"
+                            },
+                            "children": [
+                                {
+                                    "comp": "slot",
+                                    "attributes": {
+                                        "name": "SCREEN_POP"
+                                    }
+                                }
+                            ],
+                            "visibility": "SCREEN_POP"
+                        }
+                    ]
+                },
+                "homepage": {
+                    "nav": {
+                        "label": "$I18N.common.homePageLabel",
+                        "icon": "home",
+                        "iconType": "momentum",
+                        "navigateTo": "home",
+                        "align": "top"
+                    },
+                    "page": {
+                        "id": "landing",
+                        "pageHeader": {
+                            "comp": "div",
+                            "children": [
+                                {
+                                    "comp": "page-title",
+                                    "attributes": {
+                                        "pageTitle": "$STORE.page.getDefaultPageTitle"
+                                    }
+                                }
+                            ],
+							"attributes": {
+							   "style": "margin: 16px 0px 16px 16px"
+							}
+                        },
+                        "useFlexLayout": true,
+                        "pageSubHeader": {
+                            "comp": "div",
+                            "attributes": {
+                                "style": "display: flex; float:right;margin:16px 0px 16px 16px"
+                            },
+                            "children": [
+                                {
+                                    "comp": "div",
+                                    "children": [
+                                        {
+                                            "comp": "md-label",
+                                            "textContent": "$I18N.pageSubHeader.queueName",
+                                            "attributes": {
+                                                "style": "margin-bottom:8px;"
+                                            }
+                                        },
+                                        {
+                                            "comp": "agentx-wc-queue-filter",
+                                            "properties": {
+                                                "selectedQueueList": "$STORE.agent.selectedQueueList",
+                                                "managedQueues": "$STORE.agent.managedQueues",
+                                                "isLoading": "$STORE.agent.isManagedQueueLoading",
+                                                "isError": "$STORE.agent.isManagedQueuesError"
+                                            }
+                                        }
+                                    ],
+                                    "attributes": {
+                                        "style": "display:block;width:260px;"
+                                    }
+                                },
+                                {
+                                    "comp": "div",
+                                    "children": [
+                                        {
+                                            "comp": "md-label",
+                                            "textContent": "$I18N.pageSubHeader.channelType",
+                                            "attributes": {
+                                                "style": "margin-bottom:8px;"
+                                            }
+                                        },
+                                        {
+                                            "comp": "agentx-wc-channel-filter",
+                                            "properties": {
+                                                "selectedChannelList": "$STORE.agent.selectedChannelList"
+                                            }
+                                        }
+                                    ],
+                                    "attributes": {
+                                        "style": "display:block;margin-left:16px;width:260px; "
+                                    }
+                                },
+                                {
+                                    "comp": "div",
+                                    "children": [
+                                        {
+                                            "comp": "md-label",
+                                            "textContent": "$I18N.pageSubHeader.managedTeams",
+                                            "attributes": {
+                                                "style": "margin-bottom:8px;"
+                                            }
+                                        },
+                                        {
+                                            "comp": "agentx-wc-team-filter",
+                                            "properties": {
+                                                "selectedTeamList": "$STORE.agent.selectedTeamList",
+                                                "managedTeams": "$STORE.agent.managedTeams",
+                                                "isLoading": "$STORE.agent.isManagedTeamLoading",
+                                                "isError": "$STORE.agent.isManagedTeamsError"
+                                            }
+                                        }
+                                    ],
+                                    "attributes": {
+                                        "style": "display:block;margin-left:16px;width:260px;"
+                                    }
+                                },
+                                {
+                                    "comp": "div",
+                                    "children": [
+                                        {
+                                            "comp": "agentx-more-actions-wrapper",
+                                            "properties": {
+                                                "actionList": [
+                                                    {
+                                                        "comp": "agentx-wc-goto-analyzer"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ],
+                                    "attributes": {
+                                        "style": "display:block;margin-top: 20px;"
+                                    }
+                                }
+                            ]
+                        },
+                        "widgets": {
+                            "comp1": {
+                                "comp": "analyzer-widget",
+                                "width": 3,
+                                "height": 5,
+                                "attributes": {
+                                    "is-dark-mode": "$STORE.app.darkMode",
+                                    "filter": "$STORE.agent.analyzerInteractionFilter",
+                                    "access-token": "$STORE.auth.accessToken",
+                                    "user-id": "$STORE.agent.agentId",
+                                    "org-id": "$STORE.agent.orgId",
+                                    "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                                    "widget-id": "c04c307c-71fd-41f4-828f-a196f94ce08a"
+                                }
+                            },
+                            "comp2": {
+                                "comp": "analyzer-widget",
+                                "width": 3,
+                                "height": 5,
+                                "attributes": {
+                                    "is-dark-mode": "$STORE.app.darkMode",
+                                    "filter": "$STORE.agent.analyzerInteractionFilter",
+                                    "access-token": "$STORE.auth.accessToken",
+                                    "user-id": "$STORE.agent.agentId",
+                                    "org-id": "$STORE.agent.orgId",
+                                    "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                                    "widget-id": "bc3f908d-11fa-4f86-be9b-7edfe76eaa59"
+                                }
+                            },
+                            "comp3": {
+                                "comp": "analyzer-widget",
+                                "width": 3,
+                                "height": 5,
+                                "attributes": {
+                                    "is-dark-mode": "$STORE.app.darkMode",
+                                    "filter": "$STORE.agent.analyzerInteractionFilter",
+                                    "access-token": "$STORE.auth.accessToken",
+                                    "user-id": "$STORE.agent.agentId",
+                                    "org-id": "$STORE.agent.orgId",
+                                    "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                                    "widget-id": "3e4555a5-be23-46e6-8450-8ebf3f1c35e1"
+                                }
+                            },
+                            "comp4": {
+                                "comp": "analyzer-widget",
+                                "width": 3,
+                                "height": 5,
+                                "attributes": {
+                                    "is-dark-mode": "$STORE.app.darkMode",
+                                    "filter": "$STORE.agent.analyzerInteractionFilter",
+                                    "access-token": "$STORE.auth.accessToken",
+                                    "user-id": "$STORE.agent.agentId",
+                                    "org-id": "$STORE.agent.orgId",
+                                    "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                                    "widget-id": "2902a699-bf70-4568-afa1-6857db3e0dc4"
+                                }
+                            },
+                            "comp5": {
+                                "comp": "analyzer-widget",
+                                "width": 3,
+                                "height": 5,
+                                "attributes": {
+                                    "is-dark-mode": "$STORE.app.darkMode",
+                                    "filter": "$STORE.agent.analyzerInteractionFilter",
+                                    "access-token": "$STORE.auth.accessToken",
+                                    "user-id": "$STORE.agent.agentId",
+                                    "org-id": "$STORE.agent.orgId",
+                                    "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                                    "widget-id": "21716c3a-09a9-476a-bab1-5fbcff226ac6"
+                                }
+                            },
+                            "comp6": {
+                                "comp": "analyzer-widget",
+                                "width": 3,
+                                "height": 5,
+                                "attributes": {
+                                    "is-dark-mode": "$STORE.app.darkMode",
+                                    "filter": "$STORE.agent.analyzerInteractionFilter",
+                                    "access-token": "$STORE.auth.accessToken",
+                                    "user-id": "$STORE.agent.agentId",
+                                    "org-id": "$STORE.agent.orgId",
+                                    "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                                    "widget-id": "0136c56b-c40f-47a0-af1c-1a180db1fd64"
+                                }
+                            },
+                            "comp7": {
+                                "comp": "analyzer-widget",
+                                "width": 3,
+                                "height": 5,
+                                "attributes": {
+                                    "is-dark-mode": "$STORE.app.darkMode",
+                                    "filter": "$STORE.agent.analyzerInteractionFilter",
+                                    "access-token": "$STORE.auth.accessToken",
+                                    "user-id": "$STORE.agent.agentId",
+                                    "org-id": "$STORE.agent.orgId",
+                                    "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                                    "widget-id": "e5e19275-0465-4e8c-923d-c9c06002330f"
+                                }
+                            },
+                            "comp8": {
+                                "comp": "analyzer-widget",
+                                "width": 3,
+                                "height": 5,
+                                "attributes": {
+                                    "is-dark-mode": "$STORE.app.darkMode",
+                                    "filter": "$STORE.agent.analyzerInteractionFilter",
+                                    "access-token": "$STORE.auth.accessToken",
+                                    "user-id": "$STORE.agent.agentId",
+                                    "org-id": "$STORE.agent.orgId",
+                                    "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                                    "widget-id": "a0bbecca-0129-4649-9261-ef0fe69281aa"
+                                }
+                            },
+                            "comp9": {
+                                "comp": "analyzer-widget",
+                                "width": 12,
+                                "height": 6,
+                                "attributes": {
+                                    "is-dark-mode": "$STORE.app.darkMode",
+                                    "filter": "$STORE.agent.analyzerInteractionFilter",
+                                    "access-token": "$STORE.auth.accessToken",
+                                    "user-id": "$STORE.agent.agentId",
+                                    "org-id": "$STORE.agent.orgId",
+                                    "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                                    "widget-id": "9d80a068-099c-48e3-b8a8-207eb38c47c5"
+                                }
+                            }
+                        }
+                    }
+                },
+                "navigation": [
+                    {
+                        "nav": 
+						{
+                            "label": "Analyzer Reports",
+                            "icon": "dashboard",
+                            "iconType": "momentum",
+                            "navigateTo": "report",
+                            "align": "top"
+                        },
+                        "page": {
+                            "id": "iframe",
+                            "widgets": {
+                                "left":{
+						"comp": "md-tabs",
+						"children": [{
+								"comp": "md-tab",
+								"textContent": "Agent Realtime",
+								"attributes": {
+									"slot": "tab"
+								}
+							},
+							{
+								"comp": "md-tab-panel",
+								"attributes": {
+									"slot": "panel"
+								},
+								"children": [{
+									"comp": "agentx-wc-iframe",
+									"attributes": {
+										"src": "https://analyzer-v2.wxcc-anz1.cisco.com/analyzer/view/visualization?tId=b604d617-b274-4785-8175-6e4d6d8149b9&rId=-145"
+									},
+									"wrapper": {
+										"title": "Agent Realtime",
+										"maximizeAreaName": "app-maximize-area"
+									}
+								}]
+							},
+							{
+								"comp": "md-tab",
+								"textContent": "Queue Realtime",
+								"attributes": {
+									"slot": "tab"
+								}
+							},
+							{
+								"comp": "md-tab-panel",
+								"attributes": {
+									"slot": "panel"
+								},
+								"children": [{
+									"comp": "agentx-wc-iframe",
+									"attributes": {
+										"src": "https://analyzer-v2.wxcc-anz1.cisco.com/analyzer/view/visualization?tId=b604d617-b274-4785-8175-6e4d6d8149b9&rId=-1271"
+									},
+									"wrapper": {
+										"title": "Queue Realtime",
+										"maximizeAreaName": "app-maximize-area"
+									}
+								}]
+							},
+							{
+								"comp": "md-tab",
+								"textContent": "Abandoned Contacts",
+								"attributes": {
+									"slot": "tab"
+								}
+							},
+							{
+								"comp": "md-tab-panel",
+								"attributes": {
+									"slot": "panel"
+								},
+								"children": [{
+									"comp": "agentx-wc-iframe",
+									"attributes": {
+										"src": "https://analyzer-v2.wxcc-anz1.cisco.com/analyzer/view/dashboard?tId=b604d617-b274-4785-8175-6e4d6d8149b9&rId=24506"
+									},
+									"wrapper": {
+										"title": "Abandoned Contacts",
+										"maximizeAreaName": "app-maximize-area"
+									}
+								}]
+							}
+						]
+					} 		
+                            },
+                            "layout": {
+                                "areas": [
+                                    [
+                                        "left"
+                                    ]
+                                ],
+                                "size": {
+                                    "cols": [
+                                        1
+                                    ],
+                                    "rows": [
+                                        1
+                                    ]
+                                }
+                            }
+                        }
+						
+						
+						
+						
+                    },
+					{
+                        "nav": {
+                            "label": "Team Performance Details",
+                            "icon": "team",
+                            "iconType": "momentum",
+                            "navigateTo": "tpw",
+                            "align": "top"
+                        },
+                        "page": {
+                            "id": "tpw-sup",
+                            "useFlexLayout": true,
+                            "widgets": {
+                                "comp1": {
+                                    "comp": "agentx-wc-team-performance-widget",
+                                    "width": 12,
+                                    "height": 19,
+                                    "wrapper": {
+                                        "title": "$I18N.tpw.wrapperTitle",
+                                        "id": "tpw-1",
+                                        "maximizeAreaName": "app-maximize-area"
+                                    },
+                                    "properties": {
+                                        "tpwConfigs": "$STORE.agent.tpwConfigs"
+                                    }
+                                }
+                            }
+                        }
+                    },
+					{
+                        "nav": {
+                            "label": "Customer Experience Analytics",
+                            "icon": "/app/images/wxm.bcd45cc3.svg",
+                            "iconType": "other",
+                            "navigateTo": "wxm-metrics",
+                            "align": "top"
+                        },
+                        "page": {
+                            "id": "wxm-metrics",
+                            "widgets": {
+                                "comp1": {
+                                    "comp": "agentx-wc-cloudcherry-widget",
+                                    "attributes": {
+                                        "metrics": true
+                                    },
+                                    "properties": {
+                                        "userModel": "$STORE.app.userModel",
+                                        "spaceId": "61dd0d1a750aeb2b2a5ebd2a-anztsawxccdemosystem",
+                                        "metricsId": "16947124829473422144142163725-anztsawxccdemosystem",
+                                        "teamId": "$STORE.agent.teamName",
+                                        "isDarkMode": "$STORE.app.darkMode"
+                                    }
+                                }
+                            },
+                            "layout": {
+                                "areas": [
+                                    [
+                                        "comp1"
+                                    ]
+                                ],
+                                "size": {
+                                    "cols": [
+                                        1
+                                    ],
+                                    "rows": [
+                                        1
+                                    ]
+                                }
+                            }
+                        },
+                        "visibility": "WXM_METRICS"
+                    },
+					{
+						"nav": {
+							"label": "Cisco WFO",
+                            "icon": "https://storage.googleapis.com/anz-tsa-wxcc/wxcc-desktop/WFO.png",
+							"iconType": "other",
+							"navigateTo": "WFM",
+							"align": "top"
+						},
+						"page": {
+						"id": "iframe",
+						"widgets": {
+							"left": {
+							"comp": "agentx-wc-iframe",
+							"attributes": {
+							"src": "https://demowebsite-10871.web.app/WFM/calabrio.htm?m=home"
+							}
+						}
+					},
+					"layout": {
+						"areas": [
+							["left"]
+						],
+					"size": {
+						"cols": [1],
+					"rows": [1]
+					}
+				}
+			}
+		}
+                ]
+            }
+        },
+"supervisorAgent": {
+            "version": "0.1.0",
+            "appTitle": "Agent-Supervisor Desktop V7",
+            "logo": "",
+            "stopNavigateOnAcceptTask": false,
+            "dragDropEnabled": false,
+            "notificationTimer": 8,
+            "maximumNotificationCount": 3,
+            "browserNotificationTimer": 8,
+            "wxmConfigured": true,
+            "desktopChatApp": {
+                "webexConfigured": true
+            },
+            "area": {
+                "advancedHeader": [
+                    {
+                        "comp": "voice-trigger-workflows",
+                        "attributes": {
+                            "darkMode": "$STORE.app.darkMode"
+                        },
+                        "properties": {
+                            "taskMap": "$STORE.agentContact.taskMap",
+                            "taskSelected": "$STORE.agentContact.taskSelected",
+                            "configJSON": [
+                                {
+                                    "name": "Password Reset",
+                                    "url": "https://hooks.au.webexconnect.io/events/51COQ1SYXL",
+                                    "parameters": [
+                                        {
+                                            "type": "input",
+                                            "name": "message",
+                                            "label": "Send a message with the reset URL"
+                                        },
+                                        {
+                                            "type": "select",
+                                            "name": "channel",
+                                            "label": "Choose a Channel",
+                                            "values": [
+                                                "SMS",
+                                                "E-mail",
+                                                "WhatsApp"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Schedule Callback",
+                                    "url": "https://hooks.au.webexconnect.io/events/JXA9JYMTFU",
+                                    "parameters": [
+                                        {
+                                            "type": "datetime",
+                                            "name": "scheduledTime",
+                                            "label": "Enter callback Date & Time"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "One Time Pin",
+                                    "url": "https://hooks.au.webexconnect.io/events/NPPR1YT35K",
+                                    "parameters": [
+                                        {
+                                            "type": "select",
+                                            "name": "channel",
+                                            "label": "Choose a Channel",
+                                            "values": [
+                                                "SMS",
+                                                "E-mail",
+                                                "WhatsApp"
+                                            ]
+                                        },
+                                        {
+                                            "type": "input",
+                                            "name": "OTP",
+                                            "label": "Input your OTP here."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Send SMS",
+                                    "url": "https://hooks.au.webexconnect.io/events/Y6KM3CZP6V",
+                                    "parameters": [
+                                        {
+                                            "type": "input",
+                                            "name": "message",
+                                            "label": "Write your message here."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Send Email",
+                                    "url": "https://hooks.au.webexconnect.io/events/WX7B35ND8W",
+                                    "parameters": [
+                                        {
+                                            "type": "input",
+                                            "name": "email",
+                                            "label": "Please provide customers email:"
+                                        },
+                                        {
+                                            "type": "select",
+                                            "name": "template",
+                                            "Label": "Choose an email template",
+                                            "values": [
+                                                "Finance information",
+                                                "Welcome pack",
+                                                "Loyalty bonus",
+                                                "Returns process"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "script": "https://storage.googleapis.com/anz-tsa-wxcc/voice-trigger-worfklows.js"
+                    },
+                    {
+                        "comp": "agentx-webex"
+                    },
+                    {
+                        "comp": "agentx-outdial"
+                    },
+                    {
+                        "comp": "agentx-notification"
+                    },
+                    {
+                        "comp": "agentx-state-selector"
+                    }
+                    
+                ],
+                "panel": {
+                    "comp": "md-tabs",
+                    "attributes": {
+                        "class": "widget-tabs"
+                    },
+                    "children": [
+                        {
+                            "comp": "md-tab",
+                            "attributes": {
+                                "slot": "tab",
+                                "class": "widget-pane-tab"
+                            },
+                            "children": [
+                                {
+                                    "comp": "slot",
+                                    "attributes": {
+                                        "name": "IVR_TRANSCRIPT_TAB"
+                                    }
+                                }
+                            ],
+                            "visibility": "IVR_TRANSCRIPT"
+                        },
+                        {
+                            "comp": "md-tab-panel",
+                            "attributes": {
+                                "slot": "panel",
+                                "class": "widget-pane"
+                            },
+                            "children": [
+                                {
+                                    "comp": "slot",
+                                    "attributes": {
+                                        "name": "IVR_TRANSCRIPT"
+                                    }
+                                }
+                            ],
+                            "visibility": "IVR_TRANSCRIPT"
+                        },
+                        {
+                            "comp": "md-tab",
+                            "attributes": {
+                                "slot": "tab",
+                                "class": "widget-pane-tab"
+                            },
+                            "children": [
+                                {
+                                    "comp": "slot",
+                                    "attributes": {
+                                        "name": "CONTACT_HISTORY_TAB"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "comp": "md-tab-panel",
+                            "attributes": {
+                                "slot": "panel",
+                                "class": "widget-pane"
+                            },
+                            "children": [
+                                {
+                                    "comp": "customer-journey-widget",
+                                    "script": "https://cjaas.cisco.com/widgets/customer-journey-8.0.7.js",
+                                    "attributes": {
+                                        "tape-read-token": "INSERT TAPE-READ-TOKEN HERE",
+                                        "profile-read-token": "INSERT PROFILE TOKEN HERE",
+                                        "profile-write-token": "INSERT PROFILE TOKEN HERE",
+                                        "stream-read-token": "INSERT STREAM READ TOKEN HERE",
+                                        "base-url": "https://jds-us1.cjaas.cisco.com",
+                                        "identity-read-token": "INSERT IDENTITY TOKEN HERE",
+                                        "identity-write-token": "INSERT IDENTITY TOKEN HERE",
+                                        "user-search": "true",
+                                        "icon-data-path": "https://wxcc-cjds-demo.glitch.me/CJDS_ANZ_TSA_v2_icons.json",
+                                        "logs-on": "true",
+                                        "time-frame": "7-Days"
+                                    },
+                                    "properties": {
+                                        "interactionData": "$STORE.agentContact.taskSelected"
+                                    },
+                                    "wrapper": {
+                                        "title": "Customer History",
+                                        "maximizeAreaName": "app-maximize-area"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "comp": "md-tab",
+                            "attributes": {
+                                "slot": "tab"
+                            },
+                            "children": [
+                                {
+                                    "comp": "slot",
+                                    "attributes": {
+                                        "name": "WXM_JOURNEY_TAB"
+                                    }
+                                }
+                            ],
+                            "visibility": "WXM_JOURNEY"
+                        },
+                        {
+                            "comp": "md-tab-panel",
+                            "attributes": {
+                                "slot": "panel",
+                                "class": "widget-pane"
+                            },
+                            "children": [
+                                {
+                                    "comp": "agentx-wc-cloudcherry-widget",
+                                    "properties": {
+                                        "userModel": "$STORE.app.userModel",
+                                        "spaceId": "61dd0d1a750aeb2b2a5ebd29-anztsawxccdemosystem",
+                                        "metricsId": "61dd0d1a750aeb2b2a5ebd29-anztsawxccdemosystem",
+                                        "teamId": "$STORE.agent.teamName",
+                                        "ani": "$STORE.agentContact.taskSelected.ani",
+                                        "isDarkMode": "$STORE.app.darkMode"
+                                    },
+                                    "wrapper": {
+                                        "title": "Customer Experience Journey",
+                                        "maximizeAreaName": "app-maximize-area"
+                                    }
+                                }
+                            ],
+                            "visibility": "WXM_JOURNEY"
+                        },
+                        {
+                            "comp": "md-tab",
+                            "attributes": {
+                                "slot": "tab",
+                                "class": "widget-pane-tab"
+                            },
+                            "children": [
+                                {
+                                    "comp": "slot",
+                                    "attributes": {
+                                        "name": "SCREEN_POP_TAB"
+                                    }
+                                }
+                            ],
+                            "visibility": "SCREEN_POP"
+                        },
+                        {
+                            "comp": "md-tab-panel",
+                            "attributes": {
+                                "slot": "panel",
+                                "class": "widget-pane"
+                            },
+                            "children": [
+                                {
+                                    "comp": "slot",
+                                    "attributes": {
+                                        "name": "SCREEN_POP"
+                                    }
+                                }
+                            ],
+                            "visibility": "SCREEN_POP"
+                        }
+                    ]
+                },
+                "homepage": {
+                    "nav": {
+                      "label": "$I18N.common.homePageLabel",
+                      "icon": "home",
+                      "iconType": "momentum",
+                      "navigateTo": "home",
+                      "align": "top"
+                    },
+                    "page": {
+                      "id": "landing",
+                      "useFlexLayout": true,
+                      "pageHeader": {
+                        "comp": "div",
+                        "children": [
+                          {
+                            "comp": "page-title",
+                            "attributes": {
+                              "pageTitle": "$STORE.page.getDefaultPageTitle"
+                            }
+                          }
+                        ],
+                        "attributes": {
+                          "style": "margin: 16px 0px 16px 16px"
+                        }
+                      },
+                      "pageSubHeader": {
+                        "comp": "div",
+                        "attributes": {
+                          "style": "display: flex; float:right"
+                        },
+                        "children": [
+                          {
+                            "comp": "div",
+                            "children": [
+                              {
+                                "comp": "md-label",
+                                "textContent": "$I18N.pageSubHeader.queueName",
+                                "attributes": {
+                                  "style": "margin-bottom:8px;"
+                                }
+                              },
+                              {
+                                "comp": "agentx-wc-queue-filter",
+                                "properties": {
+                                  "selectedQueueList": "$STORE.agent.selectedQueueList",
+                                  "managedQueues": "$STORE.agent.managedQueues",
+                                  "isLoading": "$STORE.agent.isManagedQueueLoading",
+                                  "isError": "$STORE.agent.isManagedQueuesError"
+                                }
+                              }
+                            ],
+                            "attributes": {
+                              "style": "display:block;width:260px;"
+                            }
+                          },
+                          {
+                            "comp": "div",
+                            "children": [
+                              {
+                                "comp": "md-label",
+                                "textContent": "$I18N.pageSubHeader.channelType",
+                                "attributes": {
+                                  "style": "margin-bottom:8px;"
+                                }
+                              },
+                              {
+                                "comp": "agentx-wc-channel-filter",
+                                "properties": {
+                                  "selectedChannelList": "$STORE.agent.selectedChannelList"
+                                }
+                              }
+                            ],
+                            "attributes": {
+                              "style": "display:block;margin-left:16px;width:260px; "
+                            }
+                          },
+                          {
+                            "comp": "div",
+                            "children": [
+                              {
+                                "comp": "md-label",
+                                "textContent": "$I18N.pageSubHeader.managedTeams",
+                                "attributes": {
+                                  "style": "margin-bottom:8px;"
+                                }
+                              },
+                              {
+                                "comp": "agentx-wc-team-filter",
+                                "properties": {
+                                  "selectedTeamList": "$STORE.agent.selectedTeamList",
+                                  "managedTeams": "$STORE.agent.managedTeams",
+                                  "isLoading": "$STORE.agent.isManagedTeamLoading",
+                                  "isError": "$STORE.agent.isManagedTeamsError"
+                                }
+                              }
+                            ],
+                            "attributes": {
+                              "style": "display:block;margin-left:16px;width:260px;"
+                            }
+                          },
+                          {
+                            "comp": "div",
+                            "children": [
+                              {
+                                "comp": "agentx-more-actions-wrapper",
+                                "properties": {
+                                  "actionList": [
+                                    {
+                                      "comp": "agentx-wc-goto-analyzer"
+                                    }
+                                  ]
+                                }
+                              }
+                            ],
+                            "attributes": {
+                              "style": "display:block;margin-top: 20px;"
+                            }
+                          }
+                        ]
+                      },
+                      "widgets": {
+                        "comp1": {
+                          "comp": "analyzer-widget",
+                          "width": 3,
+                          "height": 5,
+                          "attributes": {
+                            "is-dark-mode": "$STORE.app.darkMode",
+                            "filter": "$STORE.agent.analyzerInteractionFilter",
+                            "access-token": "$STORE.auth.accessToken",
+                            "user-id": "$STORE.agent.agentId",
+                            "org-id": "$STORE.agent.orgId",
+                            "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                            "widget-id": "c04c307c-71fd-41f4-828f-a196f94ce08a"
+                          }
+                        },
+                        "comp2": {
+                          "comp": "analyzer-widget",
+                          "width": 3,
+                          "height": 5,
+                          "attributes": {
+                            "is-dark-mode": "$STORE.app.darkMode",
+                            "filter": "$STORE.agent.analyzerInteractionFilter",
+                            "access-token": "$STORE.auth.accessToken",
+                            "user-id": "$STORE.agent.agentId",
+                            "org-id": "$STORE.agent.orgId",
+                            "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                            "widget-id": "bc3f908d-11fa-4f86-be9b-7edfe76eaa59"
+                          }
+                        },
+                        "comp3": {
+                          "comp": "analyzer-widget",
+                          "width": 3,
+                          "height": 5,
+                          "attributes": {
+                            "is-dark-mode": "$STORE.app.darkMode",
+                            "filter": "$STORE.agent.analyzerInteractionFilter",
+                            "access-token": "$STORE.auth.accessToken",
+                            "user-id": "$STORE.agent.agentId",
+                            "org-id": "$STORE.agent.orgId",
+                            "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                            "widget-id": "3e4555a5-be23-46e6-8450-8ebf3f1c35e1"
+                          }
+                        },
+                        "comp4": {
+                          "comp": "analyzer-widget",
+                          "width": 3,
+                          "height": 5,
+                          "attributes": {
+                            "is-dark-mode": "$STORE.app.darkMode",
+                            "filter": "$STORE.agent.analyzerInteractionFilter",
+                            "access-token": "$STORE.auth.accessToken",
+                            "user-id": "$STORE.agent.agentId",
+                            "org-id": "$STORE.agent.orgId",
+                            "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                            "widget-id": "2902a699-bf70-4568-afa1-6857db3e0dc4"
+                          }
+                        },
+                        "comp5": {
+                          "comp": "analyzer-widget",
+                          "width": 3,
+                          "height": 5,
+                          "attributes": {
+                            "is-dark-mode": "$STORE.app.darkMode",
+                            "filter": "$STORE.agent.analyzerInteractionFilter",
+                            "access-token": "$STORE.auth.accessToken",
+                            "user-id": "$STORE.agent.agentId",
+                            "org-id": "$STORE.agent.orgId",
+                            "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                            "widget-id": "21716c3a-09a9-476a-bab1-5fbcff226ac6"
+                          }
+                        },
+                        "comp6": {
+                          "comp": "analyzer-widget",
+                          "width": 3,
+                          "height": 5,
+                          "attributes": {
+                            "is-dark-mode": "$STORE.app.darkMode",
+                            "filter": "$STORE.agent.analyzerInteractionFilter",
+                            "access-token": "$STORE.auth.accessToken",
+                            "user-id": "$STORE.agent.agentId",
+                            "org-id": "$STORE.agent.orgId",
+                            "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                            "widget-id": "0136c56b-c40f-47a0-af1c-1a180db1fd64"
+                          }
+                        },
+                        "comp7": {
+                          "comp": "analyzer-widget",
+                          "width": 3,
+                          "height": 5,
+                          "attributes": {
+                            "is-dark-mode": "$STORE.app.darkMode",
+                            "filter": "$STORE.agent.analyzerInteractionFilter",
+                            "access-token": "$STORE.auth.accessToken",
+                            "user-id": "$STORE.agent.agentId",
+                            "org-id": "$STORE.agent.orgId",
+                            "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                            "widget-id": "e5e19275-0465-4e8c-923d-c9c06002330f"
+                          }
+                        },
+                        "comp8": {
+                                "comp": "analyzer-widget",
+                                "width": 3,
+                                "height": 5,
+                                "attributes": {
+                                    "is-dark-mode": "$STORE.app.darkMode",
+                                    "filter": "$STORE.agent.analyzerInteractionFilter",
+                                    "access-token": "$STORE.auth.accessToken",
+                                    "user-id": "$STORE.agent.agentId",
+                                    "org-id": "$STORE.agent.orgId",
+                                    "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                                    "widget-id": "a0bbecca-0129-4649-9261-ef0fe69281aa"
+                                }
+                            },
+                        "comp9": {
+                                "comp": "analyzer-widget",
+                                "width": 12,
+                                "height": 6,
+                                "attributes": {
+                                    "is-dark-mode": "$STORE.app.darkMode",
+                                    "filter": "$STORE.agent.analyzerInteractionFilter",
+                                    "access-token": "$STORE.auth.accessToken",
+                                    "user-id": "$STORE.agent.agentId",
+                                    "org-id": "$STORE.agent.orgId",
+                                    "dashboard-id": "a4e99697-06d8-4575-b25d-82ef348e2410",
+                                    "widget-id": "9d80a068-099c-48e3-b8a8-207eb38c47c5"
+                                }
+                            }
+                      }
+                    }
+                  },
+                "navigation": [
+                     {
+                        "nav": {
+                            "label": "Team Performance Details",
+                            "icon": "team",
+                            "iconType": "momentum",
+                            "navigateTo": "tpw",
+                            "align": "top"
+                        },
+                        "page": {
+                            "id": "tpw-sup-agent",
+                            "useFlexLayout": true,
+                            "widgets": {
+                                "comp1": {
+                                    "comp": "agentx-wc-team-performance-widget",
+                                    "width": 12,
+                                    "height": 19,
+                                    "wrapper": {
+                                        "title": "$I18N.tpw.wrapperTitle",
+                                        "id": "tpw-1",
+                                        "maximizeAreaName": "app-maximize-area"
+                                    },
+                                    "properties": {
+                                        "tpwConfigs": "$STORE.agent.tpwConfigs"
+                                    }
+                                }
+                            }
+                        }
+                    },
+					{
+                        "nav": {
+                            "label": "Analyzer Reports",
+                            "icon": "dashboard",
+                            "iconType": "momentum",
+                            "navigateTo": "report",
+                            "align": "top"
+                        },
+                        "page": {
+                            "id": "iframe",
+                            "widgets": {
+                                "left":{
+						"comp": "md-tabs",
+						"children": [{
+								"comp": "md-tab",
+								"textContent": "Agent Realtime",
+								"attributes": {
+									"slot": "tab"
+								}
+							},
+							{
+								"comp": "md-tab-panel",
+								"attributes": {
+									"slot": "panel"
+								},
+								"children": [{
+									"comp": "agentx-wc-iframe",
+									"attributes": {
+										"src": "https://analyzer-v2.wxcc-anz1.cisco.com/analyzer/view/visualization?tId=b604d617-b274-4785-8175-6e4d6d8149b9&rId=-145"
+									},
+									"wrapper": {
+										"title": "Agent Realtime",
+										"maximizeAreaName": "app-maximize-area"
+									}
+								}]
+							},
+							{
+								"comp": "md-tab",
+								"textContent": "Queue Realtime",
+								"attributes": {
+									"slot": "tab"
+								}
+							},
+							{
+								"comp": "md-tab-panel",
+								"attributes": {
+									"slot": "panel"
+								},
+								"children": [{
+									"comp": "agentx-wc-iframe",
+									"attributes": {
+										"src": "https://analyzer-v2.wxcc-anz1.cisco.com/analyzer/view/visualization?tId=b604d617-b274-4785-8175-6e4d6d8149b9&rId=-1271"
+									},
+									"wrapper": {
+										"title": "Queue Realtime",
+										"maximizeAreaName": "app-maximize-area"
+									}
+								}]
+							},
+							{
+								"comp": "md-tab",
+								"textContent": "Abandoned Contacts",
+								"attributes": {
+									"slot": "tab"
+								}
+							},
+							{
+								"comp": "md-tab-panel",
+								"attributes": {
+									"slot": "panel"
+								},
+								"children": [{
+									"comp": "agentx-wc-iframe",
+									"attributes": {
+										"src": "https://analyzer-v2.wxcc-anz1.cisco.com/analyzer/view/dashboard?tId=b604d617-b274-4785-8175-6e4d6d8149b9&rId=24506"
+									},
+									"wrapper": {
+										"title": "Abandoned Contacts",
+										"maximizeAreaName": "app-maximize-area"
+									}
+								}]
+							}
+						]
+					} 		
+                            },
+                            "layout": {
+                                "areas": [
+                                    [
+                                        "left"
+                                    ]
+                                ],
+                                "size": {
+                                    "cols": [
+                                        1
+                                    ],
+                                    "rows": [
+                                        1
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                   	{
+                        "nav": {
+                            "label": "Corp Directory",
+                            "icon": "directory",
+                            "iconType": "momentum",
+                            "navigateTo": "atea-directory",
+                            "align": "top"
+                        },
+                        "page": {
+                            "id": "atea-directory",
+                            "widgets": {
+                                "comp2": {
+                                    "comp": "wxcc-cda",
+                                    "responsive": true,
+                                    "script": "https://crcda.wxcc.ateasystems.com/wxcc-cda.min.js",
+                                    "attributes": {
+                                        "cdaServer": "qudtloacx4hbjm6kw3jaj4jqdi0ommnx.lambda-url.ap-southeast-2.on.aws",
+                                        "outdialEntryPointId": "$STORE.agent.outDialEp",
+                                        "prefix": "",
+                                        "hidenotes": "true",
+                                        "hidesitebuttons": "true"
+                                    }
+                                }
+                            },
+                            "layout": {
+                                "areas": [
+                                    [
+                                        "comp2"
+                                    ]
+                                ],
+                                "size": {
+                                    "cols": [
+                                        1
+                                    ],
+                                    "rows": [
+                                        1
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "nav": {
+                            "label": "2Ring",
+                            "icon": "https://www.2ring.com/wp-content/themes/tworing/assets/img/logo.svg",
+                            "iconType": "other",
+                            "navigateTo": "2Ring",
+                            "align": "top"
+                        },
+                        "page": {
+                            "id": "2Ring",
+                            "widgets": {
+                                "right": {
+                                    "comp": "agentx-wc-iframe",
+                                    "attributes": {
+                                        "src": "https://demo.2ring.com/dw86/noit13"
+                                    },
+                                    "wrapper": {
+                                        "title": "2Ring Demo Dashboard",
+                                        "maximizeAreaName": "app-maximize-area"
+                                    }
+                                }
+                            },
+                            "layout": {
+                                "areas": [
+                                    [
+                                        "right"
+                                    ]
+                                ],
+                                "size": {
+                                    "cols": [
+                                        1
+                                    ],
+                                    "rows": [
+                                        1
+                                    ]
+                                }
+                            }
+                        }
+                    },
+					{
+                        "nav": {
+                            "label": "Verint KB",
+                            "icon": "https://storage.googleapis.com/anz-tsa-wxcc/wxcc-desktop/verintKB.jpg",
+                            "iconType": "other",
+                            "navigateTo": "Verint KB",
+                            "align": "top"
+                        },
+                        "page": {
+                            "id": "Verint KB",
+                            "widgets": {
+                                "right": {
+                                    "comp": "agentx-wc-iframe",
+                                    "attributes": {
+                                        "src": "https://cisco-anz.demo.verint-km.com/site/en/search?nlpq="
+                                    },
+                                    "wrapper": {
+                                        "title": "Verint Knowledgebase",
+                                        "maximizeAreaName": "app-maximize-area"
+                                    }
+                                }
+                            },
+                            "layout": {
+                                "areas": [
+                                    [
+                                        "right"
+                                    ]
+                                ],
+                                "size": {
+                                    "cols": [
+                                        1
+                                    ],
+                                    "rows": [
+                                        1
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "nav": {
+                            "label": "Customer Experience Analytics",
+                            "icon": "/app/images/wxm.bcd45cc3.svg",
+                            "iconType": "other",
+                            "navigateTo": "wxm-metrics",
+                            "align": "top"
+                        },
+                        "page": {
+                            "id": "wxm-metrics",
+                            "widgets": {
+                                "comp1": {
+                                    "comp": "agentx-wc-cloudcherry-widget",
+                                    "attributes": {
+                                        "metrics": true
+                                    },
+                                    "properties": {
+                                        "userModel": "$STORE.app.userModel",
+                                        "spaceId": "61dd0d1a750aeb2b2a5ebd2a-anztsawxccdemosystem",
+                                        "metricsId": "16947124829473422144142163725-anztsawxccdemosystem",
+                                        "teamId": "$STORE.agent.teamName",
+                                        "isDarkMode": "$STORE.app.darkMode"
+                                    }
+                                }
+                            },
+                            "layout": {
+                                "areas": [
+                                    [
+                                        "comp1"
+                                    ]
+                                ],
+                                "size": {
+                                    "cols": [
+                                        1
+                                    ],
+                                    "rows": [
+                                        1
+                                    ]
+                                }
+                            }
+                        },
+                        "visibility": "WXM_METRICS"
+                    },
+                    {
+                        "nav": {
+                            "label": "Journey Data Services",
+                            "icon": "https://storage.googleapis.com/anz-tsa-wxcc/wxcc-desktop/CJDS.PNG",
+                            "iconType": "other",
+                            "navigateTo": "CustomNav6",
+                            "align": "top"
+                        },
+                        "page": {
+                            "id": "CustomNav6",
+                            "widgets": {
+                                "right": {
+                                    "comp": "customer-journey-widget",
+                                    "script": "https://cjaas.cisco.com/widgets/customer-journey-8.0.7.js",
+                                    "attributes": {
+                                        "tape-read-token": "INSERT TAPE-READ-TOKEN HERE",
+                                        "profile-read-token": "INSERT PROFILE TOKEN HERE",
+                                        "profile-write-token": "INSERT PROFILE TOKEN HERE",
+                                        "stream-read-token": "INSERT STREAM READ TOKEN HERE",
+                                        "base-url": "https://jds-us1.cjaas.cisco.com",
+                                        "identity-read-token": "INSERT IDENTITY TOKEN HERE",
+                                        "identity-write-token": "INSERT IDENTITY TOKEN HERE",
+                                        "user-search": "true",
+                                        "icon-data-path": "https://wxcc-cjds-demo.glitch.me/CJDS_ANZ_TSA_v2_icons.json",
+                                        "logs-on": "true",
+                                        "time-frame": "7-Days"
+                                    },
+                                    "properties": {
+                                        "interactionData": "$STORE.agentContact.taskSelected"
+                                    },
+                                    "wrapper": {
+                                        "title": "Customer Journey Widget",
+                                        "maximizeAreaName": "app-maximize-area"
+                                    }
+                                }
+                            },
+                            "layout": {
+                                "areas": [
+                                    [
+                                        "right"
+                                    ]
+                                ],
+                                "size": {
+                                    "cols": [
+                                        1
+                                    ],
+                                    "rows": [
+                                        1
+                                    ]
+                                }
+                            }
+                        }
+                    },
+					{
+                        "nav": {
+                            "label": "Cisco WFO",
+                            "icon": "https://storage.googleapis.com/anz-tsa-wxcc/wxcc-desktop/WFO.png",
+                            "iconType": "other",
+                            "navigateTo": "WFM",
+                            "align": "top"
+                        },
+                        "page": {
+                            "id": "iframe",
+                            "widgets": {
+                                "left": {
+                                    "comp": "agentx-wc-iframe",
+                                    "attributes": {
+                                        "src": "https://demowebsite-10871.web.app/WFM/calabrio.htm?m=home"
+                                    }
+                                }
+                            },
+                            "layout": {
+                                "areas": [
+                                    [
+                                        "left"
+                                    ]
+                                ],
+                                "size": {
+                                    "cols": [
+                                        1
+                                    ],
+                                    "rows": [
+                                        1
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
